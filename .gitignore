@@ -1,0 +1,15 @@
+.vs/
+x64/
+Debug/
+Release/
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.idb
+*.tlog/
+*.log
+*.recipe
+*.user
+
+!models/**/*.obj
