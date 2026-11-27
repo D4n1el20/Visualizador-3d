@@ -143,7 +143,17 @@
     </Manifest>
   </ItemDefinitionGroup>
 
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EnvMap.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObjModel.cpp" />
+    <ClCompile Include="TextureLoader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EnvMap.h" />
+    <ClInclude Include="ObjModel.h" />
+    <ClInclude Include="TextureLoader.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

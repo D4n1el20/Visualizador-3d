@@ -52,7 +52,7 @@ static float rotX = 15.0f, rotY = -30.0f, camDist = 4.5f;
 
 static int lastX = 0, lastY = 0, dragButton = -1;
 
-enum { ID_REDRAW = 1, ID_LOADOBJ, ID_LOADTEX, ID_ORIGTEX, ID_RESETCAM, ID_QUIT };
+enum { ID_REDRAW = 1, ID_LOADOBJ, ID_LOADTEX, ID_ORIGTEX, ID_RESETCAM, ID_RESETLIGHT, ID_QUIT };
 
 // ---------------------------------------------------------------- utilitarios
 static void redraw() {
@@ -412,6 +412,13 @@ static void onControl(int id) {
         rotX = 15.0f; rotY = -30.0f; camDist = 4.5f;
         if (glui) glui->sync_live();
         break;
+    case ID_RESETLIGHT:
+        lightingOn = 1;
+        lightPos[0] = 3.0f; lightPos[1] = 4.0f; lightPos[2] = 5.0f;
+        shadeMode = 1;
+        if (glui) glui->sync_live();
+        setStatus("Iluminacao restaurada");
+        break;
     case ID_QUIT:
         exit(0);
         break;
@@ -449,6 +456,7 @@ static void buildInterface() {
     GLUI_RadioGroup* rgShade = glui->add_radiogroup_to_panel(pShade, &shadeMode, ID_REDRAW, onControl);
     glui->add_radiobutton_to_group(rgShade, "Flat");
     glui->add_radiobutton_to_group(rgShade, "Smooth (Gouraud)");
+    glui->add_button_to_panel(rLight, "Resetar iluminacao", ID_RESETLIGHT, onControl);
 
     GLUI_Rollout* rSpec = glui->add_rollout("Reflexao especular (Phong)", true);
     glui->add_statictext_to_panel(rSpec, "Brilho (shininess 0-128)");
